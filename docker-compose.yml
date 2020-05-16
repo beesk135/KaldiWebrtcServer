@@ -1,16 +1,19 @@
 version: '3.3'
 services:
   kaldi:
+    image : bdockbockd/asr_kaldi
     build: "./model"
     volumes:
       - "./model/model:/model"
   web:
+    image: bdockbockd/asr_web
     build: ./web/server
     volumes:
       - ./web/server:/server
     ports:
       - "8080:8080"
   frontend:
+    image : bdockbockd/asr_frontend
     build: ./web/frontend
     volumes:
       - ./web/frontend:/usr/src/app
